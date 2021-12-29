@@ -98,7 +98,7 @@ helloPromise()
 
 const promesa2 = () => {
     return new Promise((resolve, reject) => {
-        if (false) {
+        if (true) {
             resolve('resuelta');
         } else {
             reject(console.log('No resuelta'));
@@ -106,14 +106,44 @@ const promesa2 = () => {
     })
 }
 
-promesa2().then(b => console.log('1')).catch(a => console.log('2'));
+promesa2().then(b => console.log(b)).catch(a => console.log('2'));
 
-////////////////////////////////////////////////
+////// Clases, Modulos y Generadores /////////
 
-// function diAlgo(frase) {
-//     console.log(frase);
-// }
+class calculator {
+    calculator() {
+        this.valueA = 0;
+        this.valueB = 0;
+    }
 
-// setTimeout(() => diAlgo("pasaron 5 segundos"), 5000);
+    sum(valueA, valueB) {
+        this.valueA = valueA;
+        this.valueB = valueB;
+        return this.valueA + this.valueB;
+    }
+}
 
-// console.log(`hola bandamaz`);
+const calc = new calculator();
+console.log(calc.sum(2, 2));
+
+// import { hello as myHello } from './module';
+const hello = require('./module');
+console.log(hello());
+
+//GENERADORES- algoritmo que retorna valores
+function* helloWorld() {
+    if (true) {
+        yield 'hello!';
+    }
+    if (true) {
+        yield 'World';
+    }
+    yield 'Fuera de los ifs';
+}
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+
